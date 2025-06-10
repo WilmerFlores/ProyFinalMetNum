@@ -1,0 +1,99 @@
+<div class="problem-content" data-problem-id="3">
+    <button class="back-to-home-btn">← Volver a la Selección de Problemas</button>
+
+    <h2>Caída de Objetos con Resistencia del Aire (Arrastre Cuadrático)</h2>
+    <p class="problem-description">
+        Cuando un objeto cae, la gravedad no es la única fuerza en juego. La resistencia del aire, o arrastre, se opone al movimiento y su magnitud depende de factores como la velocidad del objeto, su forma y la densidad del aire. Este modelo considera una resistencia del aire proporcional al cuadrado de la velocidad, lo que es más realista para objetos que caen a velocidades significativas y conduce a un concepto clave: la velocidad terminal.
+    </p>
+
+    <h3>Ecuación Diferencial:</h3>
+    <div class="equations-display">
+        <p>Velocidad (v): $\frac{dv}{dt} = g - \frac{c}{m}v^2$</p>
+        <ul class="equation-legend">
+            <li>$v$: Velocidad del objeto</li>
+            <li>$t$: Tiempo</li>
+            <li>$g$: Aceleración debido a la gravedad (aprox. 9.81 m/s²)</li>
+            <li>$m$: Masa del objeto</li>
+            <li>$c$: Coeficiente de arrastre (depende de la forma y tamaño del objeto, y la densidad del aire)</li>
+        </ul>
+    </div>
+
+    <div class="simulation-controls">
+        <h3>Configuración de la Simulación</h3>
+        <div class="input-group">
+            <label for="v0-problem3">Velocidad Inicial ($v_0$):</label>
+            <input type="number" id="v0-problem3" value="0" step="0.1">
+        </div>
+        <div class="input-group">
+            <label for="m-problem3">Masa del Objeto ($m$, en kg):</label>
+            <input type="number" id="m-problem3" value="70" min="0.1" step="0.1">
+        </div>
+        <div class="input-group">
+            <label for="c-problem3">Coeficiente de Arrastre ($c$, en kg/m):</label>
+            <input type="number" id="c-problem3" value="0.25" min="0" step="0.01">
+        </div>
+        <div class="input-group">
+            <label for="g-problem3">Gravedad ($g$, en m/s²):</label>
+            <input type="number" id="g-problem3" value="9.81" step="0.01">
+        </div>
+        <div class="input-group">
+            <label for="time-end-problem3">Tiempo Final ($t_{fin}$, en s):</label>
+            <input type="number" id="time-end-problem3" value="20" min="1" step="1">
+        </div>
+        <div class="input-group">
+            <label for="h-problem3">Tamaño del Paso ($h$, en s):</label>
+            <input type="number" id="h-problem3" value="0.1" step="0.01" min="0.01">
+        </div>
+
+        <div class="method-selection">
+            <h4>Selecciona el Método Numérico:</h4>
+            <label><input type="radio" name="method-problem3" value="euler" checked> Euler</label>
+            <label><input type="radio" name="method-problem3" value="heun"> Heun</label>
+            <label><input type="radio" name="method-problem3" value="rungeKutta4"> Runge-Kutta 4to Orden</label>
+        </div>
+
+        <button id="start-simulation-problem3" class="simulate-btn">Iniciar Simulación</button>
+    </div>
+
+    <div class="simulation-output">
+        <h3>Resultados de la Simulación</h3>
+        <div class="animation-area">
+            <h4>Velocidad y Posición Actual</h4>
+            <div id="fall-visualizer" class="fall-display">
+                <div class="falling-object" id="falling-object-animation"></div>
+                <div class="fall-info">
+                    <p>Velocidad: <span id="current-velocity-value">0.00</span> m/s</p>
+                    <p>Altura Perdida: <span id="current-distance-value">0.00</span> m</p>
+                    <p>Velocidad Terminal Estimada: <span id="terminal-velocity-estimate">Cargando...</span></p>
+                </div>
+            </div>
+            <p>Iteración actual: <span id="current-iteration-problem3">0</span></p>
+            <p>Tiempo actual: <span id="current-time-problem3">0</span> s</p>
+        </div>
+
+        <div class="graph-area">
+            <h4>Gráfico de Velocidad y Altura Perdida vs. Tiempo</h4>
+            <canvas id="fallChart"></canvas>
+        </div>
+
+        <div class="comparison-area">
+            <button id="generate-comparison-problem3" class="comparison-btn">Generar Comparaciones entre Métodos</button>
+            <div id="comparison-table-container-problem3" style="display: none;">
+                <h4>Comparación de Métodos Numéricos</h4>
+                <table id="comparison-table-problem3" class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Método</th>
+                            <th>Velocidad Final (m/s)</th>
+                            <th>Altura Perdida Total (m)</th>
+                            <th>Iteraciones</th>
+                            <th>Tiempo de Cálculo (ms)</th>
+                            </tr>
+                    </thead>
+                    <tbody>
+                        </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,90 @@
+<div class="problem-content" data-problem-id="2">
+    <button class="back-to-home-btn">← Volver a la Selección de Problemas</button>
+
+    <h2>Enfriamiento/Calentamiento de un Objeto (Ley de Newton con Ambiente Variable)</h2>
+    <p class="problem-description">
+        Este problema simula cómo cambia la temperatura de un objeto con el tiempo, no solo en función de su temperatura inicial y una constante de enfriamiento, sino también considerando un ambiente cuya temperatura puede fluctuar. Esto permite modelar escenarios más realistas, como un horno enfriándose durante el día y la noche.
+    </p>
+
+    <h3>Ecuación Diferencial:</h3>
+    <div class="equations-display">
+        <p>Temperatura (T): $\frac{dT}{dt} = -k(T - T_{ambiente}(t))$</p>
+        <ul class="equation-legend">
+            <li>$T$: Temperatura del Objeto</li>
+            <li>$T_{ambiente}(t)$: Temperatura del Ambiente (puede ser una función del tiempo)</li>
+            <li>$k$: Coeficiente de transferencia de calor (constante de enfriamiento/calentamiento)</li>
+        </ul>
+    </div>
+
+    <div class="input-section"> <div class="input-grid">
+        <h3>Configuración de la Simulación</h3>
+        <div class="input-group">
+            <label for="T0-problem2">Temperatura Inicial del Objeto ($T_0$):</label>
+            <input type="number" id="T0-problem2" value="100" step="1">
+        </div>
+        <div class="input-group">
+            <label for="Ta-problem2">Temperatura Ambiente ($T_a$):</label>
+            <input type="number" id="Ta-problem2" value="20" step="1">
+        </div>
+        <div class="input-group">
+            <label for="k-problem2">Constante de Enfriamiento ($k$):</label>
+            <input type="number" id="k-problem2" value="0.05" step="0.01" min="0">
+        </div>
+        <div class="input-group">
+            <label for="time-end-problem2">Tiempo Final (segundos):</label>
+            <input type="number" id="time-end-problem2" value="100" step="10" min="1">
+        </div>
+        <div class="input-group">
+            <label for="h-problem2">Tamaño del Paso ($h$):</label>
+            <input type="number" id="h-problem2" value="0.1" step="0.01" min="0.01">
+        </div>
+
+        <div class="method-selection">
+            <h4>Selecciona el Método Numérico:</h4>
+            <label><input type="radio" name="method-problem2" value="euler" checked> Euler</label>
+            <label><input type="radio" name="method-problem2" value="heun"> Heun</label>
+            <label><input type="radio" name="method-problem2" value="rungeKutta4"> Runge-Kutta 4to Orden</label>
+        </div>
+
+        <button id="start-simulation-problem2" class="simulate-btn">Iniciar Simulación</button>
+    </div>
+
+    <div class="simulation-output">
+        <h3>Resultados de la Simulación</h3>
+        <div class="animation-area">
+            <h4>Temperatura Actual</h4>
+            <div class="thermometer-visualizer" id="temperature-visualizer">
+                <div class="thermometer-bar-container">
+                    <div class="thermometer-bar" id="thermometer-fill"></div>
+                    <span id="current-temperature-value" class="temp-value">0°C</span>
+                </div>
+            </div>
+            <p>Iteración actual: <span id="current-iteration-problem2">0</span></p>
+            <p>Tiempo actual: <span id="current-time-problem2">0</span></p>
+        </div>
+
+        <div class="graph-area">
+            <h4>Gráfico de Temperatura vs. Tiempo</h4>
+            <canvas id="coolingChart"></canvas>
+        </div>
+
+        <div class="comparison-area">
+            <button id="generate-comparison-problem2" class="comparison-btn">Generar Comparaciones entre Métodos</button>
+            <div id="comparison-table-container-problem2" style="display: none;">
+                <h4>Comparación de Métodos Numéricos</h4>
+                <table id="comparison-table-problem2" class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Método</th>
+                            <th>Temperatura Final</th>
+                            <th>Iteraciones</th>
+                            <th>Tiempo de Cálculo (ms)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

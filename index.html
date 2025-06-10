@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de EDOs Numérico - Soluciones a Problemas Reales</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="icon" href="src/assets/icons/favicon.ico" type="image/x-icon">
+
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimitadores para ecuaciones en línea
+                displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimitadores para ecuaciones en bloque
+            },
+            svg: {
+                fontCache: 'global' // Mejora el rendimiento del renderizado SVG
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.1/dist/chartjs-plugin-zoom.min.js"></script>
+
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <h1>Simulador de Ecuaciones Diferenciales Ordinarias</h1>
+            <p>Descubre cómo los métodos numéricos resuelven problemas complejos de la vida real.</p>
+        </div>
+    </header>
+
+    <main class="main-content container">
+        <section class="introduction">
+            <h2>La Importancia de las EDOs y los Métodos Numéricos</h2>
+            <p>Las Ecuaciones Diferenciales Ordinarias (EDOs) son herramientas matemáticas fundamentales para modelar una vasta gama de fenómenos en la ciencia y la ingeniería, desde el crecimiento de poblaciones hasta el comportamiento de circuitos eléctricos y la propagación de enfermedades. Sin embargo, muchas de estas ecuaciones no tienen una solución analítica exacta, es decir, no se pueden resolver con fórmulas matemáticas simples.</p>
+            <p>Aquí es donde entran en juego los <strong>métodos numéricos</strong>. Estos potentes algoritmos nos permiten aproximar soluciones a las EDOs, proporcionando resultados precisos y fiables que son vitales para la predicción, el diseño y la toma de decisiones en el mundo real. En este sitio, exploraremos tres de los métodos más comunes: <strong>Euler</strong>, <strong>Heun</strong> y <strong>Runge-Kutta de 4º Orden</strong>, aplicándolos a problemas concretos para visualizar su impacto.</p>
+        </section>
+
+        <section class="problem-selection">
+            <h2>Selecciona un Problema para Simular</h2>
+            <div class="problem-cards-container">
+                <div class="problem-card" data-problem="problem1">
+                    <img src="src/assets/images/problem1-hero.jpg" alt="Imagen del problema 1: Dinámica de Poblaciones">
+                    <h3>Dinámica de Ecosistemas Depredador-Presa</h3>
+                    <p>Explora cómo interactúan y coexisten las poblaciones de depredadores y presas a lo largo del tiempo.</p>
+                    <button class="select-problem-btn" data-problem-id="1">Resolver Problema</button>
+                </div>
+
+                <div class="problem-card" data-problem="problem2">
+                    <img src="src/assets/images/problem2-hero.jpg" alt="Imagen del problema 2: Enfriamiento de Objetos">
+                    <h3>Enfriamiento/Calentamiento con Ambiente Variable</h3>
+                    <p>Simula cómo cambia la temperatura de un objeto en un entorno cuya temperatura también varía.</p>
+                    <button class="select-problem-btn" data-problem-id="2">Resolver Problema</button>
+                </div>
+
+                <div class="problem-card" data-problem="problem3">
+                    <img src="src/assets/images/problem3-hero.jpg" alt="Imagen del problema 3: Caída de Objetos">
+                    <h3>Caída de Objetos con Resistencia del Aire</h3>
+                    <p>Analiza el movimiento de un objeto que cae, considerando la fuerza de arrastre del aire.</p>
+                    <button class="select-problem-btn" data-problem-id="3">Resolver Problema</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="problem-detail-area" class="problem-detail-section" style="display: none;">
+            </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 Simulador de EDOs Numérico. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="src/js/main.js"></script>
+    <script type="module" src="src/js/problem-loader.js"></script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<div class="problem-content" data-problem-id="1">
+    <button class="back-to-home-btn">← Volver a la Selección de Problemas</button>
+
+    <h2>Dinámica de Ecosistemas Depredador-Presa (Modelo Lotka-Volterra Modificado)</h2>
+    <p class="problem-description">
+        Este modelo explora la compleja relación entre dos poblaciones: una especie que es presa (ej. conejos) y otra que la depreda (ej. lobos). A través de un sistema de ecuaciones diferenciales, podemos observar cómo sus números fluctúan en ciclos interdependientes, influenciados por tasas de crecimiento, depredación y mortalidad. Comprender esta dinámica es crucial para la ecología y la conservación.
+    </p>
+
+    <h3>Ecuaciones Diferenciales (Forma Simplificada):</h3>
+    <div class="equations-display">
+        <p>Presas (P): $\frac{dP}{dt} = rP - aPB$</p>
+        <p>Depredadores (B): $\frac{dB}{dt} = cPB - dB$</p>
+        <ul class="equation-legend">
+            <li>$P$: Población de Presas</li>
+            <li>$B$: Población de Depredadores</li>
+            <li>$r$: Tasa de crecimiento intrínseco de las presas</li>
+            <li>$a$: Tasa de depredación (eficiencia de encuentro/captura)</li>
+            <li>$c$: Eficiencia de conversión de presas en nueva biomasa de depredadores</li>
+            <li>$d$: Tasa de mortalidad de los depredadores</li>
+        </ul>
+    </div>
+
+    <div class="simulation-controls">
+        <h3>Configuración de la Simulación</h3>
+        <div class="input-group">
+            <label for="p0-problem1">Población Inicial de Presas ($P_0$):</label>
+            <input type="number" id="p0-problem1" value="100" min="1">
+        </div>
+        <div class="input-group">
+            <label for="b0-problem1">Población Inicial de Depredadores ($B_0$):</label>
+            <input type="number" id="b0-problem1" value="10" min="1">
+        </div>
+        <div class="input-group">
+            <label for="r-problem1">Tasa de Crecimiento de Presas ($r$):</label>
+            <input type="number" id="r-problem1" value="0.5" step="0.01" min="0">
+        </div>
+        <div class="input-group">
+            <label for="a-problem1">Tasa de Depredación ($a$):</label>
+            <input type="number" id="a-problem1" value="0.01" step="0.001" min="0">
+        </div>
+        <div class="input-group">
+            <label for="c-problem1">Eficiencia de Conversión ($c$):</label>
+            <input type="number" id="c-problem1" value="0.005" step="0.001" min="0">
+        </div>
+        <div class="input-group">
+            <label for="d-problem1">Tasa de Mortalidad Depredadores ($d$):</label>
+            <input type="number" id="d-problem1" value="0.2" step="0.01" min="0">
+        </div>
+        <div class="input-group">
+            <label for="time-end-problem1">Tiempo Final ($t_{fin}$):</label>
+            <input type="number" id="time-end-problem1" value="100" min="1" step="1">
+        </div>
+        <div class="input-group">
+            <label for="h-problem1">Tamaño del Paso ($h$):</label>
+            <input type="number" id="h-problem1" value="0.1" step="0.01" min="0.01">
+        </div>
+
+        <div class="method-selection">
+            <h4>Selecciona el Método Numérico:</h4>
+            <label><input type="radio" name="method-problem1" value="euler" checked> Euler</label>
+            <label><input type="radio" name="method-problem1" value="heun"> Heun</label>
+            <label><input type="radio" name="method-problem1" value="rungeKutta4"> Runge-Kutta 4to Orden</label>
+        </div>
+
+        <button id="start-simulation-problem1" class="simulate-btn">Iniciar Simulación</button>
+    </div>
+
+    <div class="simulation-output">
+        <h3>Resultados de la Simulación</h3>
+        <div class="animation-area">
+            <h4>Evolución de las Poblaciones</h4>
+            <div id="population-visualizer" class="population-display">
+                <div class="prey-count">Presas: <span id="prey-value">0</span></div>
+                <div class="predator-count">Depredadores: <span id="predator-value">0</span></div>
+                <div class="ecosystem-animation">
+                    <img src="src/assets/images/rabbit-icon.png" alt="Icono de conejo" class="animated-icon" id="prey-icon">
+                    <img src="src/assets/images/wolf-icon.png" alt="Icono de lobo" class="animated-icon" id="predator-icon">
+                </div>
+            </div>
+            <p>Iteración actual: <span id="current-iteration-problem1">0</span></p>
+            <p>Tiempo actual: <span id="current-time-problem1">0</span></p>
+        </div>
+
+        <div class="graph-area">
+            <h4>Gráfico de Poblaciones vs. Tiempo</h4>
+            <canvas id="populationChart"></canvas>
+        </div>
+
+        <div class="comparison-area">
+            <button id="generate-comparison-problem1" class="comparison-btn">Generar Comparaciones entre Métodos</button>
+            <div id="comparison-table-container-problem1" style="display: none;">
+                <h4>Comparación de Métodos Numéricos</h4>
+                <table id="comparison-table-problem1" class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Método</th>
+                            <th>Población Final Presas</th>
+                            <th>Población Final Depredadores</th>
+                            <th>Iteraciones</th>
+                            <th>Tiempo de Cálculo (ms)</th>
+                            </tr>
+                    </thead>
+                    <tbody>
+                        </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
